@@ -26,10 +26,8 @@ const player2 = {
 
 function createPlayer(playerClass, playerObj) {
 
-    const $arenas = document.querySelector('.arenas');
-
-    const $player1 = document.createElement('div');
-    $player1.classList.add(playerClass);
+    const $player = document.createElement('div');
+    $player.classList.add(playerClass);
 
     const $progressbar = document.createElement('div');
     $progressbar.classList.add('progressbar');
@@ -53,12 +51,14 @@ function createPlayer(playerClass, playerObj) {
 
     $character.appendChild($img);
 
-    $player1.appendChild($progressbar);
-    $player1.appendChild($character);
+    $player.appendChild($progressbar);
+    $player.appendChild($character);
 
-
-    $arenas.appendChild($player1);
+    return $player;
 }
 
-createPlayer('player1', player1);
-createPlayer('player2', player2);
+
+const $arenas = document.querySelector('.arenas');
+
+$arenas.appendChild(createPlayer('player1', player1));
+$arenas.appendChild(createPlayer('player2', player2));
